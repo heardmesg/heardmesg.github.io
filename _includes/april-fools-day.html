@@ -1,0 +1,41 @@
+<script>
+  function x_flip(){
+    const body = document.getElementsByClassName('post-body')[0];
+    if(!body) return;
+    if(body.style.transform == "scaleX(-1)"){
+      body.style.mozTransform = "";
+      body.style.oTransform = "";
+      body.style.webkitTransform = "";
+      body.style.transform = "";
+    }
+    else{
+      body.style.mozTransform = "scaleX(-1)";
+      body.style.oTransform = "scaleX(-1)";
+      body.style.webkitTransform = "scaleX(-1)";
+      body.style.transform = "scaleX(-1)";
+    }
+  }
+  function y_flip(){
+    const postBody = document.querySelector('.post-body[itemprop="articleBody"]');
+
+    if (postBody) {
+      const children = Array.from(postBody.children);
+      const reversedChildren = children.reverse();
+      reversedChildren.forEach(child => {
+        postBody.appendChild(child);
+      });
+    }
+  }
+  function reverseBody(){
+    const type = Math.floor(Math.random() * 4);
+    if(type & 1) x_flip();
+    if(type & 2) y_flip();
+  }
+
+  const date = new Date();
+  const element_0401 = document.getElementById('0401');
+  if(date.getMonth() + 1 === 4 && date.getDate() === 1) element_0401.style.display = 'block';
+  else element_0401.style.display = 'none';
+</script>
+
+<h1 id="0401" style="text-align: center" onclick="reverseBody()">Happy April Fools' Day! <U>(Click Here!)</U></h1>
